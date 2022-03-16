@@ -1,0 +1,54 @@
+﻿@model Majal.Models.Admin
+
+@{
+    ViewBag.Title = "AdminDashBoard";
+}
+
+<fieldset>
+    <legend>UserDashBoard</legend>
+    @if (Session["adminName"] != null && Session["adminPassword"] != null)
+    {
+        <h1>Welcome @Session["adminName"]</h1>
+        <br>
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.admin_name)</th>
+                <td>@Session["adminName"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.password)</th>
+                <td>@Session["adminPassword"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.email)</th>
+                <td>@Session["adminEmail"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.phoneNo)</th>
+                <td>@Session["adminPhoneNo"].ToString()</td>
+            </tr>
+            <tr>
+                <th>Edit</th>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = Convert.ToInt32(Session["adminID"]) },null)</td>
+            </tr>
+        </table>
+    }
+</fieldset>
+
+<div>
+    <input type="button" value="Show Courses" onclick="window.location= '@Url.Action( "getCourses", "course")'" />
+</div>
+<div>
+    <input type="button" value="Show Instructors" onclick="window.location= '@Url.Action( "getInstructors", "Instructor")'" />
+</div>
+<div>
+    @Html.ActionLink("Add Admin", "addAdmin", "admin")
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+<br /><br />
+<div>
+    @Html.ActionLink("Lock Profile", "lockProfile", "admin")
+</div>
+

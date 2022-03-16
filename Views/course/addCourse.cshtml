@@ -1,0 +1,95 @@
+﻿@model Majal.Models.course
+
+@{
+    ViewBag.Title = "AddCourse";
+    List<SelectListItem> Day = new List<SelectListItem>();
+    Day.Add(new SelectListItem
+    {
+        Text = "Sat",
+        Value = "Sat"
+    });
+    Day.Add(new SelectListItem
+    {
+        Text = "Sun",
+        Value = "Sun"
+    });
+    Day.Add(new SelectListItem
+    {
+        Text = "Mon",
+        Value = "Mon"
+    }); Day.Add(new SelectListItem
+    {
+        Text = "Tues",
+        Value = "Tues"
+    }); Day.Add(new SelectListItem
+    {
+        Text = "Wed",
+        Value = "Wed"
+    }); Day.Add(new SelectListItem
+    {
+        Text = "Thurs",
+        Value = "Thurs"
+    });
+}
+
+<fieldset>
+    <legend>Add Course</legend>
+    <form method="post" action="" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.couse_name)<br />
+            @Html.EditorFor(a => a.couse_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.couse_name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Instructor)<br />
+            @Html.EditorFor(a => a.Instructor, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.Instructor, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Day)<br />
+            @Html.DropDownListFor(a => a.Day, Day, "--Select--", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(a => a.Day, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.StartSlot)<br />
+            @Html.EditorFor(a => a.StartSlot, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.StartSlot, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.EndSlot)<br />
+            @Html.EditorFor(a => a.EndSlot, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.EndSlot, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.startsFrom)<br />
+            @Html.EditorFor(a => a.startsFrom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.startsFrom, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Duration)<br />
+            @Html.EditorFor(a => a.Duration, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.Duration, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.hallNo)<br />
+            @Html.EditorFor(a => a.hallNo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.hallNo, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Capacity)<br />
+            @Html.EditorFor(a => a.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.Capacity, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Add Course" />
+        </div>
+    </form>
+</fieldset>
+<br />
+<div>
+    <input type="button" value="Back To Courses List" onclick="window.location= '@Url.Action( "getCourses", "course")'" />
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+

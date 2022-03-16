@@ -1,0 +1,14 @@
+﻿@model Majal.Models.appointment
+
+@{
+    ViewBag.Title = "Already Started";
+}
+
+<h3>This Course's Already Started, You Can't Cancel it.</h3>
+
+<br />
+<br /> <input type="button" value="Back To My Appointments" onclick="window.location= '@Url.Action( "getAppList", "appointment")'" />
+
+<div>
+    @Html.ActionLink("Log out","login","user")
+</div>

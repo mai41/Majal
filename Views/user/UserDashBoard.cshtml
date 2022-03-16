@@ -1,0 +1,61 @@
+﻿@model Majal.Models.user
+
+@{
+    ViewBag.Title = "UserDashBoardLogin";
+}
+
+<fieldset>
+    <legend>UserDashBoard</legend>
+    @if (Session["userName"] != null && Session["password"] != null)
+    {
+        <h1>Welcome @Session["userName"]</h1>
+        <br>
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.user_name)</th>
+                <td>@Session["userName"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.password)</th>
+                <td>@Session["password"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.email)</th>
+                <td>@Session["email"].ToString()</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(u => u.phoneNo)</th>
+                <td>@Session["phoneNo"].ToString()</td>
+            </tr>
+            <tr>
+                <th>Edit</th>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = Convert.ToInt32(Session["userID"]) },null)</td>
+            </tr>
+        </table>
+    }
+</fieldset>
+
+<div>@Html.ActionLink("Creative Writing", "getCreativeWritingList", "course")</div>
+<div>@Html.ActionLink("Programming", "getProgrammingList", "course")</div>
+<div>@Html.ActionLink("Marketing", "getMarketingList", "course")</div>
+<div>@Html.ActionLink("Designing", "getDesignList", "course")</div>
+<div>@Html.ActionLink("Editing", "getEditingList", "course")</div>
+<div>@Html.ActionLink("Languages", "getLanguageList", "course")</div>
+
+<div>
+    <input type="button" value="Show My Appointments" onclick="window.location= '@Url.Action( "getAppList", "appointment")'" />
+
+</div>
+<div>
+    <input type="button" value="Show Instructors List" onclick="window.location= '@Url.Action( "getInstructorsList", "Instructor")'" />
+
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>
+
+<br /><br />
+<div>
+    @Html.ActionLink("Lock Profile", "lockProfile", "user")
+</div>
+

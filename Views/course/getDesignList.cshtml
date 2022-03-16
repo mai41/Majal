@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Majal.Models.course>
+
+@{
+    ViewBag.Title = "Design";
+}
+
+<fieldset>
+    <legend>Design Courses</legend>
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(a => a.course_id)</th>
+            <th>@Html.DisplayNameFor(a => a.couse_name)</th>
+            <th>@Html.DisplayNameFor(a => a.Instructor)</th>
+            <th>@Html.DisplayNameFor(a => a.Day)</th>
+            <th>@Html.DisplayNameFor(a => a.StartSlot)</th>
+            <th>@Html.DisplayNameFor(a => a.EndSlot)</th>
+            <th>@Html.DisplayNameFor(a => a.startsFrom)</th>
+            <th>@Html.DisplayNameFor(a => a.Duration)</th>
+            <th>@Html.DisplayNameFor(a => a.hallNo)</th>
+            <th>Reserve Appointment</th>
+        </tr>
+
+        @foreach (Majal.Models.course course in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(a => course.course_id)</td>
+                <td>@Html.DisplayFor(a => course.couse_name)</td>
+                <td>@Html.DisplayFor(a => course.Instructor)</td>
+                <td>@Html.DisplayFor(a => course.Day)</td>
+                <td>@Html.DisplayFor(a => course.StartSlot)</td>
+                <td>@Html.DisplayFor(a => course.EndSlot)</td>
+                <td>@Html.DisplayFor(a => course.startsFrom)</td>
+                <td>@Html.DisplayFor(a => course.Duration)</td>
+                <td>@Html.DisplayFor(a => course.hallNo)</td>
+                <td>@Html.ActionLink("Reserve", "ReseveApp", new { courseid = course.course_id })</td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <input type="button" value="Back To User DashBoard" onclick="window.location= '@Url.Action( "UserDashBoard", "user")'" />
+    </div>
+
+</fieldset>
+
+<br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

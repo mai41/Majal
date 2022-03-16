@@ -1,0 +1,37 @@
+﻿@model Majal.Models.instructor
+
+@{
+    ViewBag.Title = "EditInstructor";
+}
+
+<fieldset>
+    <legend>Edit Instructor</legend>
+    <form method="post" action="" novalidate="novalidate">
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Name)<br />
+            @Html.EditorFor(a => a.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.Name, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.course)<br />
+            @Html.EditorFor(a => a.course, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.course, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.DisplayNameFor(a => a.Description)<br />
+            @Html.EditorFor(a => a.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(a => a.Description, "", new { @class = "text-danger" })
+        </div>
+        <div>
+            <input type="submit" value="Edit" />
+        </div>
+    </form>
+</fieldset>
+<br />
+<div>
+    <input type="button" value="Back To Instructor List" onclick="window.location= '@Url.Action( "getInstructors", "Instructor")'" />
+</div>
+<div>
+    @Html.ActionLink("Log out", "login", "admin")
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Majal.Models.instructor>
+
+@{
+    ViewBag.Title = "Instructors";
+}
+
+<fieldset>
+    <legend>Instructors</legend>
+    <br />
+    @using (Html.BeginForm("getInstructorsList", "Instructor", FormMethod.Get))
+    {
+        <b>Search Option: </b>@Html.RadioButton("option", "Instructor Name")<text>Instructor Name</text>
+        @Html.RadioButton("option", "Course")<text>Course</text>
+        @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" />
+    }
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(a => a.id)</th>
+            <th>@Html.DisplayNameFor(a => a.Name)</th>
+            <th>@Html.DisplayNameFor(a => a.course)</th>
+            <th>@Html.DisplayNameFor(a => a.Description)</th>
+        </tr>
+
+        @foreach (Majal.Models.instructor ins in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(a => ins.id)</td>
+                <td>@Html.DisplayFor(a => ins.Name)</td>
+                <td>@Html.DisplayFor(a => ins.course)</td>
+                <td>@Html.DisplayFor(a => ins.Description)</td>
+            </tr>
+        }
+
+    </table>
+    <div>
+        <input type="button" value="Back To User DashBoard" onclick="window.location= '@Url.Action( "UserDashBoard", "user")'" />
+    </div>
+
+</fieldset>
+
+<br /><div>
+    @Html.ActionLink("Log out", "login", "user")
+</div>

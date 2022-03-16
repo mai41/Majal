@@ -1,0 +1,14 @@
+﻿@model Majal.Models.Admin
+
+@{
+    ViewBag.Title = "Admin Added Successfully";
+}
+
+<h3>You Added This Admin Successfully.</h3>
+
+<br />
+<br /> <input type="button" value="Back" onclick="window.location= '@Url.Action( "addAdmin", "admin")'" />
+
+<div>
+    @Html.ActionLink("Log out","login","admin")
+</div>
